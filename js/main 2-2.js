@@ -15,8 +15,7 @@ const linkNewFormElememt = document.querySelector('.js-button-new-form');
 const labelMesageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const input_search_race = document.querySelector('.js_in_search_race');
-const GITHUB_USER = 'mireiaparra';
-const SERVER_URL = `https://dev.adalab.es/api/kittens/${GITHUB_USER}`;
+
 
 //Objetos con cada gatito
 const kittenData_1 = {
@@ -38,7 +37,7 @@ const kittenData_3 = {
     race: "British Shorthair",
 };
 
-
+const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
 //Funciones
 function renderKitten(kittenData) {
@@ -141,28 +140,19 @@ function filterKitten(event) {
     renderKittenList(kittenDataListFilterd);
   }
 
-  let kittenDataList = [];
 
-  fetch(SERVER_URL, {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json'},
-  }).then(response => response.json())
-    .then(data => {
-      kittenDataList = data.results;
-      console.log(kittenDataList);
-      renderKittenList(kittenDataList);
-    })
-  
-//Mostrar el litado de gatitos en el HTML
 
+
+
+
+//Mostrar el litado de gatitos en ell HTML
+renderKittenList(kittenDataList);
 
 //Eventos
 linkNewFormElememt.addEventListener("click", handleClickNewCatForm);
 searchButton.addEventListener("click", filterKitten);
 buttonAdd.addEventListener("click", addNewKitten);
 buttonCancelForm.addEventListener("click", cancelNewKitten);
-
-
 
 
 
