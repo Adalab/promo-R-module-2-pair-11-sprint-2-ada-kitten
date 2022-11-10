@@ -39,43 +39,30 @@ const kittenData_3 = {
 };
 
 
+
 //Funciones
-
 function renderKitten(kittenData) {
-  const liElement = document.createElement('li');
-  liElement.classList.add('card');
-  const artElement = document.createElement('article');
-  const imgElement = document.createElement('img');
-  imgElement.classList.add('card_img');
-  imgElement.src = kittenData.image;
-  imgElement.alt = "gatito";
-  artElement.appendChild(imgElement);
-
-  const nameElement = document.createElement('h3');
-  const nameText = document.createTextNode(kittenData.name);
-  nameElement.appendChild(nameText);
-  artElement.appendChild(nameElement);
-
-  const raceElement = document.createElement('h3');
-  const raceText = document.createTextNode(kittenData.race);
-  raceElement.appendChild(raceText);
-  artElement.appendChild(raceElement);
-
-  const parElement = document.createElement('p');
-  parElement.classList.add('card_description');
-  const parText = document.createTextNode(kittenData.desc);
-  parElement.appendChild(parText);
-  artElement.appendChild(parElement);
-
-  liElement.appendChild(artElement);
-
-  listElement.appendChild(liElement);  
+    const kitten = `<li class="card">
+    <article>
+      <img
+        class="card_img"
+        src=${kittenData.image}
+        alt="gatito"
+      />
+      <h3 class="card_title">${kittenData.name}</h3>
+      <h3 class="card_race">${kittenData.race}</h3>
+      <p class="card_description">
+      ${kittenData.desc}
+      </p>
+    </article>
+    </li>`;
+    return kitten;
 }
 
 function renderKittenList(kittenDataList) {
     listElement.innerHTML = "";
     for (const kittenItem of kittenDataList) {
-       renderKitten(kittenItem);
+        listElement.innerHTML += renderKitten(kittenItem);
     }
 }
 
